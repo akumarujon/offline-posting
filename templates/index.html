@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .input {
+            border: solid 1.4px black;
+            border-radius: 5px;
+        }
+
+        .button {
+            background-color: black !important;
+            color: white;
+            border-radius: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="mx-auto p-5 text-center justify-center flex flex-col">
+        <h1 class="text-center text-4xl">Send post to your telegram channel.</h1>
+        <div class="flex justify-center">
+            <button onclick="text()" class="button w-40 m-2">Text Content</button>
+            <button onclick="media()" class="button w-40 m-2 ">Media Content</button>
+        </div>
+        <!-- Text Content -->
+        <form action="/text" method="post" id="text_form" class="flex justify-center place-self-center flex-col w-3/5 text-center">
+            <h1 class="m-5">Text Content</h1>
+            <textarea type="text" name="text" id="text" placeholder="Text content." class="input p-2 m-2"></textarea>
+            <br>
+            <input type="submit" value="Publish." class="button p-2 m-2">
+        </form>
+        <!-- Media Content -->
+        <form action="/media" enctype="multipart/form-data" method="post" id="media_form" class="flex justify-center place-self-center flex-col w-3/5 text-center">
+            <h1 class="m-5">Media Content</h1>
+            <input type="file" name="file" id="file" value="Upload a media." >
+            <textarea type="text" name="text" id="text" placeholder="Text content." class="input p-2 m-2"></textarea>
+            <br>
+            <input type="submit" value="Publish." id="publish" class="button p-2 m-2">
+        </form>
+    </div>
+
+    <script>
+        function clear() {
+            document.getElementById("media_form").style.display = "none"
+            document.getElementById("text_form").style.display = "flex"
+        }
+
+        clear()
+
+        function text() {
+            document.getElementById("media_form").style.display = "none"
+            document.getElementById("text_form").style.display = "flex"
+        }
+
+        function media() {
+            document.getElementById("text_form").style.display = "none"
+            document.getElementById("media_form").style.display = "flex"
+        }
+
+        // document.getElementById("publish").addEventListener("click", event => {
+        //     console.log(new FileReader(document.getElementById("file")).readAsText);
+        // })
+
+    </script>
+
+</body>
+
+</html>
