@@ -1,1 +1,1 @@
-export const chat_id = ""; // your chat id.
+export const chat_id = "5560860031"; // your chat id.
