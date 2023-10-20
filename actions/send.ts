@@ -1,35 +1,28 @@
-import { join } from "https://deno.land/std@0.198.0/path/join.ts";
-import { router } from "../config/app.ts";
-import { Context, InputFile } from "../deps.ts";
-import { bot, chat_id } from "../config/mod.ts";
+import { InputFile, HonoContext } from "../deps.ts";
+import { app, bot, chat_id } from "../config/mod.ts";
 
-router.get("/", async (ctx: Context) => {
+app.get("/", async (ctx: HonoContext) => {
   const body = await Deno.readTextFile(`${Deno.cwd()}/templates/index.html`);
-  ctx.response.body = body;
+  return ctx.html(body);
 });
 
-router.post("/media", async (ctx: Context) => {
-  const body = ctx.request.body({ type: "form-data" });
-  const file = await body.value.read({ outPath: join(Deno.cwd(), "out") });
-  const filename = file.files[0].filename as string;
-  const caption = file.fields.text;
+app.post("/media", async (ctx:HonoContext) => {
+  const body = await ctx.req.parseBody();
+  const caption = body.text;
 
-  console.log("OK");
-  bot.api.sendPhoto(chat_id, new InputFile(filename), {
-    caption,
+  bot.api.sendPhoto(chat_id, new InputFile(body.file), {
+    caption: caption as string
   });
 
-  ctx.response.body = "Message is sent.";
+  return ctx.text("Message is sent.")
 });
 
-router.post("/text", async (ctx: Context) => {
-  const body = await ctx.request.body({ type: "form" }).value;
+app.post("/text", async(ctx: HonoContext) => {
 
-  for (const [_key, text] of body) {
-    await bot.api.sendMessage(chat_id, text, {
+  await bot.api.sendMessage(chat_id, (await ctx.req.parseBody()).text as string, 
+    {
       parse_mode: "Markdown",
-    });
-  }
-
-  ctx.response.body = "Message is sent."
+    }
+  );
+  return ctx.text("Message is sent.")
 });
