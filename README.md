@@ -3,7 +3,7 @@
 A project I made when I had nothing else to do. I was wasting most of my time surfing through Telegram chats. I wanted delete Telegram, but I couldn't because of my [telegram channel](https://akumarubek.t.me), so I did it.
 
 ### About
-This project is built with [Deno](https://deno.com) runtime. I used [oak](https://github.com/oak-server/oak) for web part and [GrammY](https://grammy.dev) for Telegram bot part and my [botland](https://github.com/akumarujon/botland) template But it's still in WIP. But you can try it yourself for fun.
+This project is built with [Deno](https://deno.com) runtime. I used [Hono](https://github.com/honojs/hono) for web part and [GrammY](https://grammy.dev) for Telegram bot part and my [botland](https://github.com/akumarujon/botland) template But it's still in WIP. But you can try it yourself for fun.
 
 ### Features
 - Creates a bot instance with `Grammy`
@@ -15,7 +15,7 @@ First, clone this repository:
 ```bash
 https://github.com/akumarujon/offline-posting
 ```
-CD to the directory and run the file `mod.ts`:
+Move to the directory and run the file `mod.ts`:
 ```bash
 cd offline-posting
 deno run -A mod.ts
