@@ -1,1 +1,5 @@
-export const chat_id = "5560860031"; // your chat id.
+import { kv } from "./kv.ts"
+
+const chat_id = (await kv.get(['channel_id'])).value as string;
+
+export { chat_id };
