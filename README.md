@@ -8,7 +8,7 @@ This project is built with [Deno](https://deno.com) runtime. I used [Hono](https
 ### Features
 - Creates a bot instance with `Grammy`
 - Creates 3 routes for rendering form and sending the post.
-- Gets POST request and sends it's data to your Telegram Channel.(for now only in DM.)
+- Gets POST request and sends it's data to your Telegram Channel.
 
 ### Usage
 First, clone this repository:
@@ -18,13 +18,14 @@ https://github.com/akumarujon/offline-posting
 Move to the directory and run the file `mod.ts`:
 ```bash
 cd offline-posting
-deno run -A mod.ts
+deno run -A --unstable mod.ts
 ```
+
+#### You can deploy it directly to [Deno Deploy](https://deno.com/deploy).
 
 ### ToDo
 - Add Markdown support.
 - Refactor code.
-- Support posting on Telegram channel.
 
 ### License
 This project licensed under MIT. Check [License](./LICENSE)
