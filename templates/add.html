@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .input {
+            border: solid 1.4px black;
+            border-radius: 5px;
+        }
+
+        .button {
+            background-color: black !important;
+            color: white;
+            border-radius: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="mx-auto p-5 text-center justify-center flex flex-col">
+        <h1 class="text-center text-4xl">Add your telegram channel.</h1>
+        <!-- Text Content -->
+        <form action="/add" method="post" id="text_form" class="flex justify-center place-self-center flex-col w-3/5 text-center">
+            <h1 class="m-5">Put channel id.</h1>
+            <textarea type="text" name="text" id="text" placeholder="Text content." class="input p-2 m-2"></textarea>
+            <br>
+            <input type="submit" value="Publish." class="button p-2 m-2">
+        </form>
+
+    </div>
+
+</body>
+
+</html>
