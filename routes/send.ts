@@ -10,7 +10,7 @@ app.post("/media", async (ctx:HonoContext) => {
   const body = await ctx.req.parseBody();
   const caption = body.text;
 
-  bot.api.sendPhoto(chat_id, new InputFile(body.file), {
+  await bot.api.sendPhoto(chat_id, new InputFile(body.file as File), {
     caption: caption as string
   });
 
@@ -18,7 +18,7 @@ app.post("/media", async (ctx:HonoContext) => {
 });
 
 app.post("/text", async(ctx: HonoContext) => {
-
+  console.log(chat_id)
   await bot.api.sendMessage(chat_id, (await ctx.req.parseBody()).text as string, 
     {
       parse_mode: "Markdown",
